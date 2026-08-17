@@ -62,7 +62,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd ~/spring-boost-deploy
+            cd /opt/spring-boost-deploy
             docker compose pull app
             docker compose up -d app
             docker image prune -f
