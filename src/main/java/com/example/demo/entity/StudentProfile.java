@@ -18,7 +18,7 @@ import java.util.UUID;
 @Entity
 public class StudentProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String avatar;
 }
