@@ -1,0 +1,32 @@
+services:
+
+  app:
+    build: .
+    container_name: demo-app
+    restart: unless-stopped
+
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/githubactions-learning
+      DB_USERNAME: root
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    depends_on:
+      - mysql
+
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:8.4
+    container_name: demo-mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: githubactions-learning
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
