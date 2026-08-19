@@ -45,7 +45,7 @@ pipeline {
     steps {
         sshagent(['vps-ssh']) {
             sh '''
-                ssh -o StrictHostKeyChecking=no root@134.209.104.47 "
+                ssh -o StrictHostKeyChecking=no root@129.212.234.54 "
                     cd /opt/spring-boost-deploy &&
                     docker compose pull app &&
                     docker compose up -d app
