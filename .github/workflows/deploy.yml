@@ -43,14 +43,14 @@ jobs:
       # =========================
       - name: Build Docker image
         run: |
-          docker build -t phucitdev/demo:latest .
+          docker build -t phucitdev/spring-boost-deploy:latest .
 
       # =========================
       # Push Docker Image
       # =========================
       - name: Push Docker image
         run: |
-          docker push phucitdev/demo:latest
+          docker push phucitdev/spring-boost-deploy:latest
 
       # =========================
       # Deploy VPS

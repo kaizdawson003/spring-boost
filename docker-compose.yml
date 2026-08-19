@@ -1,7 +1,7 @@
 services:
 
   app:
-    build: .
+    image: phucitdev/demo:latest
     container_name: demo-app
     restart: unless-stopped
 
@@ -14,7 +14,7 @@ services:
       - mysql
 
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
 
   mysql:
     image: mysql:8.4
@@ -28,5 +28,24 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+    ports:
+      - "127.0.0.1:3306:3306"
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+
 volumes:
   mysql_data:
+  npm_data:
+  npm_letsencrypt:
